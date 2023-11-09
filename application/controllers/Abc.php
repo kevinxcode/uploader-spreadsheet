@@ -264,4 +264,50 @@ class Abc extends CI_Controller {
 			return 2;
 		}
 	}
+
+	function tes(){
+		$dateString = '11/8/2023';
+		$targetFormat = 'Y-m-d';
+
+		$result = $this->changeDateFormat($dateString, $targetFormat);
+		echo $result; // Output: 09-11-2023
+	}
+
+
+
+	function changeDateFormat($dateString, $targetFormat){
+		// List of possible date formats to try
+		$formatsToTry = [
+			'Y-m-d H:i:s',
+			'Y-m-d',
+			'm/d/Y H:i:s',
+			'm/d/Y',
+			'd-m-Y H:i:s',
+			'd-m-Y',
+			// Add more formats as needed
+		];
+
+		$dateTime = null;
+
+		// Try each format until a valid DateTime object is created
+		foreach ($formatsToTry as $format) {
+			$dateTime = DateTime::createFromFormat($format, $dateString);
+			if ($dateTime !== false) {
+				break;
+			}
+		}
+
+		// If a valid DateTime object is created, change the format
+		if ($dateTime !== false) {
+			$formattedDate = $dateTime->format($targetFormat);
+			return $formattedDate;
+		} else {
+			// Handle the case when none of the formats match
+			return 'Invalid date format';
+		}
+	}
+
+
+
+
 }
