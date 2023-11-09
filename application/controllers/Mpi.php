@@ -26,6 +26,7 @@ class Mpi extends CI_Controller {
 	}
 
 	function uplpoad_data_cetak(){
+		set_time_limit(5000); // 
 		if(isset($_POST['import'])){ // Jika user mengklik tombol Import
 			// ambil data file
 			$namaFile = $_FILES['namafile']['name'];
@@ -138,6 +139,7 @@ class Mpi extends CI_Controller {
 	}
 
 	function upload_pengeluaran(){
+		set_time_limit(5000); // 
 		if(isset($_POST['import'])){ // Jika user mengklik tombol Import
 			// ambil data file
 			$namaFile = $_FILES['namafile']['name'];
@@ -195,6 +197,7 @@ class Mpi extends CI_Controller {
 	}
 
 	function upload_kas(){
+		set_time_limit(5000); // 
 		if(isset($_POST['import'])){ // Jika user mengklik tombol Import
 			// ambil data file
 			$namaFile = $_FILES['namafile']['name'];
