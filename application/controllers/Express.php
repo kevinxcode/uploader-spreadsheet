@@ -26,7 +26,7 @@ class Express extends CI_Controller {
 	}
 
 	function uplpoad_data_cetak(){
-		set_time_limit(5000); // 
+		set_time_limit(500000000000000000); // 
 		if(isset($_POST['import'])){ // Jika user mengklik tombol Import
 			// ambil data file
 			$namaFile = $_FILES['namafile']['name'];
@@ -44,73 +44,73 @@ class Express extends CI_Controller {
 			$numrow = 1;
 			$count = count($sheet);
 			foreach($sheet as $row){
-			  $id = $row['A']; 
-			  $Tanggal = $row['B']; 
-			  $Customer = $row['C']; 
-			  $Deskripsi = $row['D']; 
-			  $Bahan = $row['E']; 
-			  $Sisi = $row['F']; 
-			  $Uk1 = $row['G']; 
-			  $X = $row['H']; 
-			  $Uk2 = $row['I']; 
-			  $M = $row['J']; 
-			  $Jumlah = $row['K']; 
-			  $Pcs = $row['L']; 
-			  $Finishing = $row['M']; 
-			  $Desain = $row['N']; 
-			  $HargaModal = $row['O']; 
-			  $UnitPriceModal = $row['P']; 
-			  $TotalModal = $row['Q']; 
-			  $Harga = $row['R']; 
-			  $UnitPrice = $row['S']; 
-			  $Total = $row['T']; 
-			  $Balance = $row['U']; 
-			  $Dp = $row['V']; 
-			  $Ppn = $row['W']; 
-			  $ActualAmount = $row['X']; 
-			  $SisaBayar = $row['Y']; 
-			  $Tgl_DP = $row['Z']; 
-			  $Tgl_Lunas = $row['AA']; 
-			  $NoInvoice = $row['AB']; 
-			  $Status = $row['AC']; 
-			  $Validasi = $row['AD']; 
-			  $User = $row['AE']; 
-			  $Mesin = $row['AF']; 
-
-			  $data = array(
-				'id' => $id,
-				'Tanggal' => $Tanggal,
-				'Customer' => $Customer,
-				'Deskripsi' => $Deskripsi,
-				'Bahan' => $Bahan,
-				'Sisi' => $Sisi,
-				'Uk1' => $Uk1,
-				'X' => $X,
-				'Uk2' => $Uk2,
-				'M' => $M,
-				'Jumlah' => $Jumlah,
-				'Pcs' => $Pcs,
-				'Finishing' => $Finishing,
-				'Desain' => $Desain,
-				// 'HargaModal' => $HargaModal,
-				// 'UnitPriceModal' => $UnitPriceModal,
-				// 'TotalModal' => $TotalModal,
-				'Harga' => $Harga,
-				'UnitPrice' => $UnitPrice,
-				'Total' => $Total,
-				// 'Balance' => $Balance,
-				'Dp' => $Dp,
-				'Ppn' => $Ppn,
-				'ActualAmount' => $ActualAmount,
-				'SisaBayar' => $SisaBayar,
-				'Tgl_DP' => $Tgl_DP,
-				'Tgl_Lunas' => $Tgl_Lunas,
-				'NoInvoice' => $NoInvoice,
-				'Status' => $Status,
-				'Validasi' => $Validasi,
-				'User' => $User,
-				'Mesin' => $Mesin,
-			);
+				$id = $row['A']; 
+				$Tanggal = $row['B']; 
+				$Customer = $row['C']; 
+				$Deskripsi = $row['D']; 
+				$Bahan = $row['E']; 
+				$Sisi = $row['F']; 
+				$Uk1 = $row['G']; 
+				$X = $row['H']; 
+				$Uk2 = $row['I']; 
+				$M = $row['J']; 
+				$Jumlah = $row['K']; 
+				$Pcs = $row['L']; 
+				$Finishing = $row['M']; 
+				$Desain = $row['N']; 
+				$HargaModal = $row['O']; 
+				$UnitPriceModal = $row['P']; 
+				$TotalModal = $row['Q']; 
+				$Harga = $row['R']; 
+				$UnitPrice = $row['S']; 
+				$Total = $row['T']; 
+				$Balance = $row['U']; 
+				$Dp = $row['V']; 
+				$Ppn = $row['W']; 
+				$ActualAmount = $row['X']; 
+				$SisaBayar = $row['Y']; 
+				$Tgl_DP = $row['Z']; 
+				$Tgl_Lunas = $row['AA']; 
+				$NoInvoice = $row['AB']; 
+				$Status = $row['AC']; 
+				$Validasi = $row['AD']; 
+				$User = $row['AE']; 
+				$Mesin = $row['AF']; 
+  
+				$data = array(
+				  'id' => $id,
+				  'Tanggal' => $Tanggal,
+				  'Customer' => $Customer,
+				  'Deskripsi' => $Deskripsi,
+				  'Bahan' => $Bahan,
+				  'Sisi' => $Sisi,
+				  'Uk1' => $Uk1,
+				  'X' => $X,
+				  'Uk2' => $Uk2,
+				  'M' => $M,
+				  'Jumlah' => $Jumlah,
+				  'Pcs' => $Pcs,
+				  'Finishing' => $Finishing,
+				  'Desain' => $Desain,
+				  'HargaModal' => $HargaModal,
+				  'UnitPriceModal' => $UnitPriceModal,
+				  'TotalModal' => $TotalModal,
+				  'Harga' => $Harga,
+				  'UnitPrice' => $UnitPrice,
+				  'Total' => $Total,
+				  'Balance' => $Balance,
+				  'Dp' => $Dp,
+				  'Ppn' => $Ppn,
+				  'ActualAmount' => $ActualAmount,
+				  'SisaBayar' => $SisaBayar,
+				  'Tgl_DP' => $Tgl_DP,
+				  'Tgl_Lunas' => $Tgl_Lunas,
+				  'NoInvoice' => $NoInvoice,
+				  'Status' => $Status,
+				  'Validasi' => $Validasi,
+				  'User' => $User,
+				  'Mesin' => $Mesin,
+			  );
 			$this->expressdb = $this->load->database('expressdb', TRUE);
 			$check = $this->check_data_cetak($id);
 			if($check==2){
@@ -139,7 +139,7 @@ class Express extends CI_Controller {
 	}
 
 	function upload_pengeluaran(){
-		set_time_limit(5000); // 
+		set_time_limit(500000000000000000); // 
 		if(isset($_POST['import'])){ // Jika user mengklik tombol Import
 			// ambil data file
 			$namaFile = $_FILES['namafile']['name'];
@@ -197,7 +197,7 @@ class Express extends CI_Controller {
 	}
 
 	function upload_kas(){
-		set_time_limit(5000); // 
+		set_time_limit(500000000000000000); // 
 		if(isset($_POST['import'])){ // Jika user mengklik tombol Import
 			// ambil data file
 			$namaFile = $_FILES['namafile']['name'];
