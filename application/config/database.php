@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['abcdb'] = array(
 	'dsn'	=> '',
-	'hostname' => '193.203.186.160',
+	'hostname' => 'localhost',
 	'username' => 'u753751205_abconline321',
 	'password' => 'HisLKsdw311299!',
 	'database' => 'u753751205_abconline',
@@ -97,7 +97,7 @@ $db['abcdb'] = array(
 
 $db['expressdb'] = array(
 	'dsn'	=> '',
-	'hostname' => '193.203.186.160',
+	'hostname' => 'localhost',
 	'username' => 'u753751205_expressonline',
 	'password' => 'HsaOIo2ahias!23',
 	'database' => 'u753751205_expressonline',
@@ -120,7 +120,7 @@ $db['expressdb'] = array(
 
 $db['mpidb'] = array(
 	'dsn'	=> '',
-	'hostname' => '193.203.186.160',
+	'hostname' => 'localhost',
 	'username' => 'u753751205_dbmpi321',
 	'password' => 'dbMpi321!133f',
 	'database' => 'u753751205_dbmpi321',
