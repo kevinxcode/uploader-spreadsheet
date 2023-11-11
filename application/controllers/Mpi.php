@@ -77,7 +77,7 @@ class Mpi extends CI_Controller {
 			  $User = $row['AE']; 
 			  $Mesin = $row['AF']; 
 
-			  $data = array(
+			  $data[] = array(
 				'id' => $id,
 				'Tanggal' => $Tanggal,
 				'Customer' => $Customer,
@@ -111,18 +111,54 @@ class Mpi extends CI_Controller {
 				'User' => $User,
 				'Mesin' => $Mesin,
 			);
+// 			
+			$numrow++; 
+		}
+			unlink($path); 
+		}
+		foreach($data as $dt){
+			$data = array(
+				'id' => $dt['id'],
+				'Tanggal' => $dt['Tanggal'],
+				'Customer' => $dt['Customer'],
+				'Deskripsi' => $dt['Deskripsi'],
+				'Bahan' => $dt['Bahan'],
+				'Sisi' => $dt['Sisi'],
+				'Uk1' => $dt['Uk1'],
+				'X' => $dt['X'],
+				'Uk2' => $dt['Uk2'],
+				'M' => $dt['M'],
+				'Jumlah' => $dt['Jumlah'],
+				'Pcs' => $dt['Pcs'],
+				'Finishing' => $dt['Finishing'],
+				'Desain' => $dt['Desain'],
+				'HargaModal' => $dt['HargaModal'],
+				'UnitPriceModal' => $dt['UnitPriceModal'],
+				'TotalModal' => $dt['TotalModal'],
+				'Harga' => $dt['Harga'],
+				'UnitPrice' => $dt['UnitPrice'],
+				'Total' => $dt['Total'],
+				'Balance' => $dt['Balance'],
+				'Dp' => $dt['Dp'],
+				'Ppn' => $dt['Ppn'],
+				'ActualAmount' => $dt['ActualAmount'],
+				'SisaBayar' => $dt['SisaBayar'],
+				'Tgl_DP' => $dt['Tgl_DP'],
+				'Tgl_Lunas' => $dt['Tgl_Lunas'],
+				'NoInvoice' => $dt['NoInvoice'],
+				'Status' => $dt['Status'],
+				'Validasi' => $dt['Validasi'],
+				'User' => $dt['User'],
+				'Mesin' => $dt['Mesin'],
+			);
 			$this->mpidb = $this->load->database('mpidb', TRUE);
-			$check = $this->check_data_cetak($id);
+			$check = $this->check_data_cetak($dt['id']);
 			if($check==2){
 				$this->mpidb->insert('datacetak', $data);
 			}else{
-				$this->mpidb->where('id', $id);
+				$this->mpidb->where('id', $dt['id']);
 				$this->mpidb->update('datacetak', $data);
-				
 			}
-			$numrow++; 
-			 }
-			unlink($path); 
 		}
 		redirect('?msg=success&&com=MPI DATA CETAK&&count='.$count);
 	}

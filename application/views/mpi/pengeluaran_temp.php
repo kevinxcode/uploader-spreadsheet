@@ -82,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>MPI pengeluaran : <?php echo $msg; ?></h1>
 
 	<div id="body">
-<form action="<?php echo base_url(); ?>MPI/upload_pengeluaran"  method="post" enctype="multipart/form-data">
+<form action="<?php echo base_url(); ?>mpi/upload_pengeluaran"  method="post" enctype="multipart/form-data">
   <label for="lname">excel File:</label><br>
   <input type="file" name="namafile" ><br><br>
   <input type="submit" name="import" id="btn_submit" onclick="uploadData()" value="import"  class="button">
