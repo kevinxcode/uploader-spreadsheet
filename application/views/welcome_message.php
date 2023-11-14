@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 	<?php if($alert==1): ?>
 <div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
   <strong> <?php echo $msg; ?> </strong> <?php echo $com; ?> - <?php echo $count; ?> data
 </div>
 <?php endif; ?>
@@ -91,26 +91,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <tr>
     <th>ABC PRINT</th>
     <th>MPI</th>
-    <th>EXPRESS</th>
+		<th>EXPRESS</th>
+    <th>NAGOYA</th>
   </tr>
   <tr>
     <td><a href="<?php echo base_url(); ?>abc/data_cetak" class="button" >DATA CETAK</a></td>
     <td><a href="<?php echo base_url(); ?>mpi/data_cetak" class="button" >DATA CETAK</a></td>
-    <td><a href="<?php echo base_url(); ?>express/data_cetak" class="button" >DATA CETAK</a></td>
+		<td><a href="<?php echo base_url(); ?>express/data_cetak" class="button" >DATA CETAK</a></td>
+    <td><a href="<?php echo base_url(); ?>nagoya/data_cetak" class="button" >DATA CETAK</a></td>
   </tr>
   <tr>
   	<td><a href="<?php echo base_url(); ?>abc/kas_harian" class="button" >KAS HARIAN</a></td>
     <td><a href="<?php echo base_url(); ?>mpi/kas_harian" class="button" >KAS HARIAN</a></td>
-    <td><a href="<?php echo base_url(); ?>express/kas_harian" class="button" >KAS HARIAN</a></td>
+		<td><a href="<?php echo base_url(); ?>express/kas_harian" class="button" >KAS HARIAN</a></td>
+    <td><a href="<?php echo base_url(); ?>nagoya/kas_harian" class="button" >KAS HARIAN</a></td>
   </tr>
   <tr>
   	<td><a href="<?php echo base_url(); ?>abc/pengeluaran" class="button" >PENGELUARAN</a></td>
     <td><a href="<?php echo base_url(); ?>mpi/pengeluaran" class="button" >PENGELUARAN</a></td>
-    <td><a href="<?php echo base_url(); ?>express/pengeluaran" class="button" >PENGELUARAN</a></td>
+		<td><a href="<?php echo base_url(); ?>express/pengeluaran" class="button" >PENGELUARAN</a></td>
+    <td><a href="<?php echo base_url(); ?>nagoya/pengeluaran" class="button" >PENGELUARAN</a></td>
   </tr>
 </table>
-		
-		
+
+
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
