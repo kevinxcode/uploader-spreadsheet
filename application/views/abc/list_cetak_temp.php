@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>ABC uploader</title>
+	<title>LIST DATA CETAK ABC</title>
 
 	<style type="text/css">
 
@@ -80,6 +80,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	<h1>LIST DATA CETAK :</h1>
+<div style="padding-left: 15px">
+<form action="<?php echo base_url(); ?>abc/list_cetak"  method="get" enctype="multipart/form-data">
+  <input type="text" name="dt1" value="<?php echo $dt1; ?>" >
+  <input type="text" name="dt2" value="<?php echo $dt2; ?>" >
+  <input type="submit" name="check"  value="SUBMIT"  class="button">
+  <input type="submit" name="check"  value="PDF"  class="button">
+</form>
+</div>
 
 <div id="body">
 <!--  -->
@@ -130,40 +138,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </thead>
         
         <tbody>
+			<?php foreach($list as $dt) { ?>
             <tr>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
+                <td><?php echo $dt->id; ?></td>
+                <td><?php echo $dt->Tanggal; ?></td>
+                <td><?php echo $dt->Customer; ?></td>
+                <td><?php echo $dt->Deskripsi; ?></td>
+                <td><?php echo $dt->Bahan; ?></td>
+                <td><?php echo $dt->Sisi; ?></td>
+                <td><?php echo $dt->Uk1; ?></td>
+                <td><?php echo $dt->X; ?></td>
+                <td><?php echo $dt->Uk2; ?></td>
+                <td><?php echo $dt->M; ?></td>
+                <td><?php echo $dt->Jumlah; ?></td>
+                <td><?php echo $dt->Pcs; ?></td>
+                <td><?php echo $dt->Finishing; ?></td>
+                <td><?php echo $dt->Desain; ?></td>
+                <td><?php echo $dt->HargaModal; ?></td>
+                <td><?php echo $dt->UnitPriceModal; ?></td>
+                <td><?php echo $dt->TotalModal; ?></td>
+                <td><?php echo $dt->Harga; ?></td>
+                <td><?php echo $dt->UnitPrice; ?></td>
+                <td><?php echo $dt->Total; ?></td>
+                <td><?php echo $dt->Balance; ?></td>
+                <td><?php echo $dt->Dp; ?></td>
+                <td><?php echo $dt->Ppn; ?></td>
+                <td><?php echo $dt->ActualAmount; ?></td>
+                <td><?php echo $dt->SisaBayar; ?></td>
+                <td><?php echo $dt->Tgl_DP; ?></td>
+                <td><?php echo $dt->Tgl_Lunas; ?></td>
+                <td><?php echo $dt->NoInvoice; ?></td>
+                <td><?php echo $dt->Status; ?></td>
+                <td><?php echo $dt->Validasi; ?></td>
+                <td><?php echo $dt->User; ?></td>
+                <td><?php echo $dt->Mesin; ?></td>
             </tr>
+			<?php } ?>
             
         </tbody>
     </table>
@@ -194,7 +204,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   background-color: #04AA6D;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 8px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

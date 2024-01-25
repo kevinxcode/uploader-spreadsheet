@@ -308,11 +308,23 @@ class Abc extends CI_Controller {
 	}
 
 	public function list_cetak(){
+		$check = $this->input->get('check');
+		if(isset($check)){
+			$dt1 = $this->input->get('dt1');
+			$dt2 = $this->input->get('dt2');
+		}else{
+			$dt1 = date('Y-m-d', strtotime(date('Y-m-d'). ' - 30 days'));
+			$dt2 = date('Y-m-d', strtotime(date('Y-m-d'). ' + 2 days'));
+		}
+		$data['dt1'] = $dt1;
+		$data['dt2'] = $dt2;
+
 		$this->abcdb = $this->load->database('abcdb', TRUE);
-		$sql = "SELECT * FROM datacetak where tanggal between '2023-10-01' AND  '2023-11-01' order by id desc";
+		$sql = "SELECT * FROM datacetak where tanggal between '$dt1' AND  '$dt2' order by id desc";
 		$query = $this->abcdb->query($sql);
 		$list =  $query->result();
 		$this->abcdb->close();
+
 
 		$data['list'] = $list;
 		$this->load->view('abc/list_cetak_temp', $data);
