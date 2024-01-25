@@ -79,8 +79,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>LIST DATA CETAK :</h1>
+	
 <div style="padding-left: 15px">
+<h3>LIST DATA CETAK : <?php echo $page; ?></h1>
 <form action="<?php echo base_url(); ?>abc/list_cetak"  method="get" enctype="multipart/form-data">
   <input type="text" name="dt1" value="<?php echo $dt1; ?>" >
   <input type="text" name="dt2" value="<?php echo $dt2; ?>" >

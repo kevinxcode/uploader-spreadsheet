@@ -308,6 +308,7 @@ class Abc extends CI_Controller {
 	}
 
 	public function list_cetak(){
+		$data['page'] = 'ABC';
 		$check = $this->input->get('check');
 		if(isset($check)){
 			$dt1 = $this->input->get('dt1');
