@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['abcdb'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '193.203.186.160',
 	'username' => 'u753751205_abconline321',
 	'password' => 'HisLKsdw311299!',
 	'database' => 'u753751205_abconline',
@@ -97,7 +97,7 @@ $db['abcdb'] = array(
 
 $db['expressdb'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '193.203.186.160',
 	'username' => 'u753751205_expressonline',
 	'password' => 'HsaOIo2ahias!23',
 	'database' => 'u753751205_expressonline',
@@ -120,7 +120,7 @@ $db['expressdb'] = array(
 
 $db['mpidb'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '193.203.186.160',
 	'username' => 'u753751205_dbmpi321',
 	'password' => 'dbMpi321!133f',
 	'database' => 'u753751205_dbmpi321',
@@ -143,10 +143,10 @@ $db['mpidb'] = array(
 
 $db['nagoyadb'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'u753751205_nagoyaAbc',
-	'password' => 'J9c4=xbqki?',
-	'database' => 'u753751205_nagoya',
+	'hostname' => '193.203.186.160',
+	'username' => 'u753751205_abcNagoya321',
+	'password' => 'AbcNagoya321!',
+	'database' => 'u753751205_abcNagoya',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -162,3 +162,5 @@ $db['nagoyadb'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+// 193.203.186.160

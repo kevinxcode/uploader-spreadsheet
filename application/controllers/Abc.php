@@ -307,6 +307,17 @@ class Abc extends CI_Controller {
 		}
 	}
 
+	public function list_cetak(){
+		$this->abcdb = $this->load->database('abcdb', TRUE);
+		$sql = "SELECT * FROM datacetak where tanggal between '2023-10-01' AND  '2023-11-01' order by id desc";
+		$query = $this->abcdb->query($sql);
+		$list =  $query->result();
+		$this->abcdb->close();
+
+		$data['list'] = $list;
+		$this->load->view('abc/list_cetak_temp', $data);
+	}
+
 
 
 

@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <tr>
     <td><a href="<?php echo base_url(); ?>abc/data_cetak" class="button" >DATA CETAK</a></td>
     <td><a href="<?php echo base_url(); ?>mpi/data_cetak" class="button" >DATA CETAK</a></td>
-		<td><a href="<?php echo base_url(); ?>express/data_cetak" class="button" >DATA CETAK</a></td>
+	<td><a href="<?php echo base_url(); ?>express/data_cetak" class="button" >DATA CETAK</a></td>
     <td><a href="<?php echo base_url(); ?>nagoya/data_cetak" class="button" >DATA CETAK</a></td>
   </tr>
   <tr>
@@ -109,9 +109,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <tr>
   	<td><a href="<?php echo base_url(); ?>abc/pengeluaran" class="button" >PENGELUARAN</a></td>
     <td><a href="<?php echo base_url(); ?>mpi/pengeluaran" class="button" >PENGELUARAN</a></td>
-		<td><a href="<?php echo base_url(); ?>express/pengeluaran" class="button" >PENGELUARAN</a></td>
+	<td><a href="<?php echo base_url(); ?>express/pengeluaran" class="button" >PENGELUARAN</a></td>
     <td><a href="<?php echo base_url(); ?>nagoya/pengeluaran" class="button" >PENGELUARAN</a></td>
   </tr>
+
+  <tr>
+  	<td><a href="<?php echo base_url(); ?>abc/list_cetak" class="button2" >LIST DATA CETAK</a></td>
+    <td><a href="<?php echo base_url(); ?>mpi/list_cetak" class="button2" >LIST DATA CETAK</a></td>
+	<td><a href="<?php echo base_url(); ?>express/list_cetak" class="button2" >LIST DATA CETAK</a></td>
+    <td><a href="<?php echo base_url(); ?>nagoya/list_cetak" class="button2" >LIST DATA CETAK</a></td>
+  </tr>
+
 </table>
 
 
@@ -126,6 +134,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <style>
 .button {
   background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {
+  background-color: #2104AA;
   border: none;
   color: white;
   padding: 15px 32px;
