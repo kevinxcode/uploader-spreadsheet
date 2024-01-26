@@ -330,6 +330,7 @@ class Abc extends CI_Controller {
 		$data['list'] = $list;
 		$this->load->view('abc/list_cetak_temp', $data);
 	}
+	
 
 
 
