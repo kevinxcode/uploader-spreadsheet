@@ -7,6 +7,7 @@ class Mdata extends CI_Model{
     }
 
 	public function get_profile($id_user){
+		exit;
 		$sql = "SELECT * FROM tb_user where id='$id_user'  order by id desc";
 		$query = $this->db->query($sql);
 		return $query->result();
