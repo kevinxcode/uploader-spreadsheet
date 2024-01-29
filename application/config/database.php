@@ -95,6 +95,28 @@ $db['abcdb'] = array(
 	'save_queries' => TRUE
 );
 
+$db['abcdb_real'] = array(
+	'dsn'	=> '',
+	'hostname' => '45.13.133.218',
+	'username' => 'u2895797_AbCprintingBatam',
+	'password' => 'T4Usdasdhdas82wewenxzZXKzXuisssu318',
+	'database' => 'u2895797_db_aBcprinting',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
 $db['expressdb'] = array(
 	'dsn'	=> '',
 	'hostname' => '193.203.186.160',

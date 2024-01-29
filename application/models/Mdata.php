@@ -12,6 +12,17 @@ class Mdata extends CI_Model{
 		return $query->result();
 		$this->db->close();
 	}
+
+	function check_data_cetak_abc($id){
+		$this->abcdb = $this->load->database('abcdb', TRUE);
+		$sql = "select id from datacetak where id_dummy='$id'";
+		$query = $this->abcdb->query($sql);
+		if($query->num_rows() > 0){
+			return 1;
+		}else{
+			return 2;
+		}
+	}
 	
     
 	
