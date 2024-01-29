@@ -91,7 +91,35 @@ class Api extends CI_Controller {
                 $this->abcdb->update('pemasukkan', $data);
             }
         }
-    }   
+    }
+    
+    function abc_pengeluaran(){
+        $this->abcdb_real = $this->load->database('abcdb_real', TRUE);
+        $now = date('Y-m-d');
+        $sql = "SELECT * FROM pengeluaran WHERE id>6120 AND date(created_date)='$now'  order by id asc ";
+		$query = $this->abcdb_real->query($sql);
+		$list = $query->result();
+		$this->abcdb_real->close();
+        foreach($list as $dt){
+            $data = array(
+                'id_dummy' => 'D-'.$dt->id,
+                'Tanggal' => $dt->Tanggal,
+                'Keterangan' => $dt->Keterangan,
+                'Jumlah' => $dt->Jumlah,
+                'User' => $dt->User,
+                'Status' => $dt->Status,
+            );
+            $new_id = 'D-'.$dt->id;
+            $this->abcdb = $this->load->database('abcdb', TRUE);
+            $check = $this->Mdata->check_abc_pengeluaran($new_id);
+            if($check==2){
+                $this->abcdb->insert('pengeluaran', $data);
+            }else{
+                $this->abcdb->where('id_dummy', $new_id);
+                $this->abcdb->update('pengeluaran', $data);
+            }
+        }
+    }
 
 }
 
