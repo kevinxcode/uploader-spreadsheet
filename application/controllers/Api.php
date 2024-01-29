@@ -68,6 +68,9 @@ class Api extends CI_Controller {
 		$list = $query->result();
 		$this->abcdb_real->close();
         foreach($list as $dt){
+                $id_ = $dt->id;
+                $date_ = $dt->Tanggal;
+                $invoice_date = $this->Mdata->get_percent_date($id_,$date_);
             $data = array(
                 'id_dummy' => 'D-'.$dt->id,
                 'Tanggal' => $dt->Tanggal,
@@ -80,6 +83,7 @@ class Api extends CI_Controller {
                 'Tgl_DP' => $dt->Tgl_DP,
                 'Tgl_Lunas' => $dt->Tgl_Lunas,
                 'Keterangan' => $dt->Keterangan,
+                'invoice_date' => $invoice_date,
             );
             $new_id = 'D-'.$dt->id;
             $this->abcdb = $this->load->database('abcdb', TRUE);
@@ -91,6 +95,7 @@ class Api extends CI_Controller {
                 $this->abcdb->update('pemasukkan', $data);
             }
         }
+        echo 'success : '.count($list);
     }
     
     function abc_pengeluaran(){
@@ -119,7 +124,19 @@ class Api extends CI_Controller {
                 $this->abcdb->update('pengeluaran', $data);
             }
         }
+        echo 'success : '.count($list);
     }
+
+    function tes(){
+        // $this->abcdb_real = $this->load->database('abcdb_real', TRUE);
+        // $now = date('Y-m-d');
+        // $sql = "SELECT * FROM pemasukkan WHERE id>25294 AND date(created_date)='$now'  order by id asc limi 10 ";
+		// $query = $this->abcdb_real->query($sql);
+		// $list = $query->result();
+		// $this->abcdb_real->close(); 
+    }
+
+    
 
 }
 

@@ -6,6 +6,23 @@ class Mdata extends CI_Model{
         parent::__construct();
     }
 
+	function get_percent_date($string,$date_data){
+        $last = substr($string, -1);
+        if($last==6){
+		   $new_date = date("Y-m-d", strtotime($date_data . " +3 days"));
+        }else if($last==2 || $last==4){
+            $last_character = 2; 
+			$new_date = date("Y-m-d", strtotime($date_data . " +2 days"));
+        }else if($last==9 || $last==5 || $last==0 || $last==7){
+            $last_character = 1; 
+			$new_date = date("Y-m-d", strtotime($date_data . " +1 days"));
+        }else if($last==1 || $last==3 || $last==8){
+            $new_date = $date_data; 
+        }
+		return $new_date;
+       
+    }
+
 	public function get_profile($id_user){
 		exit;
 		$sql = "SELECT * FROM tb_user where id='$id_user'  order by id desc";

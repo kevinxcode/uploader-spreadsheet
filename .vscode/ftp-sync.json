@@ -17,7 +17,8 @@
         "\\.vscode",
         "\\.git",
         "\\.DS_Store",
-        "\\.htaccess"
+        "\\.htaccess",
+        "\\database.php"
     ],
     "generatedFiles": {
         "extensionsToInclude": [
