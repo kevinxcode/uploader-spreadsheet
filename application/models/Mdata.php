@@ -23,6 +23,17 @@ class Mdata extends CI_Model{
 			return 2;
 		}
 	}
+
+	function check_abc_pemasukan($id){
+		$this->abcdb = $this->load->database('abcdb', TRUE);
+		$sql = "select id from pemasukkan where id_dummy='$id'";
+		$query = $this->abcdb->query($sql);
+		if($query->num_rows() > 0){
+			return 1;
+		}else{
+			return 2;
+		}
+	}
 	
     
 	

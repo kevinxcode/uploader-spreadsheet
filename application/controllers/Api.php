@@ -57,13 +57,40 @@ class Api extends CI_Controller {
                     $this->abcdb->update('datacetak', $data);
                 }
             }
-            
-           
-          
         }
-        
- 
-		
+    }
+
+    function abc_pemasukan(){
+        $this->abcdb_real = $this->load->database('abcdb_real', TRUE);
+        $now = date('Y-m-d');
+        $sql = "SELECT * FROM pemasukkan WHERE id>25294 AND date(created_date)='$now'  order by id asc ";
+		$query = $this->abcdb_real->query($sql);
+		$list = $query->result();
+		$this->abcdb_real->close();
+        foreach($list as $dt){
+            $data = array(
+                'id_dummy' => 'D-'.$dt->id,
+                'Tanggal' => $dt->Tanggal,
+                'NoInvoice' => $dt->NoInvoice,
+                'Customer' => $dt->Customer,
+                'Dp' => $dt->Dp,
+                'SisaBayar' => $dt->SisaBayar,
+                'Saldo' => $dt->Saldo,
+                'StatusBayar' => $dt->StatusBayar,
+                'Tgl_DP' => $dt->Tgl_DP,
+                'Tgl_Lunas' => $dt->Tgl_Lunas,
+                'Keterangan' => $dt->Keterangan,
+            );
+            $new_id = 'D-'.$dt->id;
+            $this->abcdb = $this->load->database('abcdb', TRUE);
+            $check = $this->Mdata->check_abc_pemasukan($new_id);
+            if($check==2){
+                $this->abcdb->insert('pemasukkan', $data);
+            }else{
+                $this->abcdb->where('id_dummy', $new_id);
+                $this->abcdb->update('pemasukkan', $data);
+            }
+        }
     }   
 
 }
