@@ -127,13 +127,132 @@ class Api extends CI_Controller {
         echo 'success : '.count($list);
     }
 
-    function tes(){
-        // $this->abcdb_real = $this->load->database('abcdb_real', TRUE);
-        // $now = date('Y-m-d');
-        // $sql = "SELECT * FROM pemasukkan WHERE id>25294 AND date(created_date)='$now'  order by id asc limi 10 ";
-		// $query = $this->abcdb_real->query($sql);
-		// $list = $query->result();
-		// $this->abcdb_real->close(); 
+    // express
+    function express_data_cetak(){
+        $this->express_real = $this->load->database('express_real', TRUE);
+        $now = date('Y-m-d');
+        $sql = "SELECT * FROM datacetak WHERE id>33985 AND date(created_date)='$now'  order by id asc";
+		$query = $this->express_real->query($sql);
+		$list = $query->result();
+		$this->express_real->close();
+       
+        if(count($list)>0){
+            foreach($list as $obj){
+                $data = array(
+                    'id_dummy' => 'D-'.$obj->id,
+                    'Tanggal' => $obj->Tanggal,
+                    'Customer' => $obj->Customer,
+                    'Deskripsi' => $obj->Deskripsi,
+                    'Bahan' => $obj->Bahan,
+                    'Sisi' => $obj->Sisi,
+                    'Uk1' => $obj->Uk1,
+                    'X' => $obj->X,
+                    'Uk2' => $obj->Uk2,
+                    'M' => $obj->M,
+                    'Jumlah' => $obj->Jumlah,
+                    'Pcs' => $obj->Pcs,
+                    'Finishing' => $obj->Finishing,
+                    'Desain' => $obj->Desain,
+                    'HargaModal' => null,
+                    'UnitPriceModal' => null,
+                    'TotalModal' => null,
+                    'Harga' => $obj->Harga,
+                    'UnitPrice' => $obj->UnitPrice,
+                    'Total' => $obj->Total,
+                    'Balance' => null,
+                    'Dp' => $obj->Dp,
+                    'Ppn' => $obj->Ppn,
+                    'ActualAmount' => $obj->ActualAmount,
+                    'SisaBayar' => $obj->SisaBayar,
+                    'Tgl_DP' => $obj->Tgl_DP,
+                    'Tgl_Lunas' => $obj->Tgl_Lunas,
+                    'NoInvoice' => $obj->NoInvoice,
+                    'Status' => $obj->Status,
+                    'Validasi' => $obj->Validasi,
+                    'User' => $obj->User,
+                    'Mesin' => $obj->Mesin,
+                );
+               
+                $new_id = 'D-'.$obj->id;
+                $this->expressdb = $this->load->database('expressdb', TRUE);
+                $check = $this->Mdata->check_data_cetak_express($new_id);
+                if($check==2){
+                    $this->expressdb->insert('datacetak', $data);
+                }else{
+                    $this->expressdb->where('id_dummy', $new_id);
+                    $this->expressdb->update('datacetak', $data);
+                }
+            }
+        }
+    }
+
+    function express_pemasukan(){
+        $this->express_real = $this->load->database('express_real', TRUE);
+        $now = date('Y-m-d');
+        $sql = "SELECT * FROM pemasukkan WHERE id>19819 AND date(created_date)='$now'  order by id asc ";
+		$query = $this->express_real->query($sql);
+		$list = $query->result();
+		$this->express_real->close();
+       
+        foreach($list as $dt){
+                $id_ = $dt->id;
+                $date_ = $dt->Tanggal;
+                $invoice_date = $this->Mdata->get_percent_date($id_,$date_);
+            $data = array(
+                'id_dummy' => 'D-'.$dt->id,
+                'Tanggal' => $dt->Tanggal,
+                'NoInvoice' => $dt->NoInvoice,
+                'Customer' => $dt->Customer,
+                'Dp' => $dt->Dp,
+                'SisaBayar' => $dt->SisaBayar,
+                'Saldo' => $dt->Saldo,
+                'StatusBayar' => $dt->StatusBayar,
+                'Tgl_DP' => $dt->Tgl_DP,
+                'Tgl_Lunas' => $dt->Tgl_Lunas,
+                'Keterangan' => $dt->Keterangan,
+                'invoice_date' => $invoice_date,
+            );
+            $new_id = 'D-'.$dt->id;
+            $this->expressdb = $this->load->database('expressdb', TRUE);
+            $check = $this->Mdata->check_express_pemasukan($new_id);
+            if($check==2){
+                $this->expressdb->insert('pemasukkan', $data);
+            }else{
+                $this->expressdb->where('id_dummy', $new_id);
+                $this->expressdb->update('pemasukkan', $data);
+            }
+        }
+        echo 'success : '.count($list);
+    }
+
+    function express_pengeluaran(){
+        $this->express_real = $this->load->database('express_real', TRUE);
+        $now = date('Y-m-d');
+        $sql = "SELECT * FROM pengeluaranxpress WHERE id>2474 AND date(created_date)='$now'  order by id asc ";
+		$query = $this->express_real->query($sql);
+		$list = $query->result();
+		$this->express_real->close();
+       
+        foreach($list as $dt){
+            $data = array(
+                'id_dummy' => 'D-'.$dt->id,
+                'Tanggal' => $dt->Tanggal,
+                'Keterangan' => $dt->Keterangan,
+                'Jumlah' => $dt->Jumlah,
+                'User' => $dt->User,
+                'Status' => null,
+            );
+            $new_id = 'D-'.$dt->id;
+            $this->expressdb = $this->load->database('expressdb', TRUE);
+            $check = $this->Mdata->check_express_pengeluaran($new_id);
+            if($check==2){
+                $this->expressdb->insert('pengeluaran', $data);
+            }else{
+                $this->expressdb->where('id_dummy', $new_id);
+                $this->expressdb->update('pengeluaran', $data);
+            }
+        }
+        echo 'success : '.count($list);
     }
 
     

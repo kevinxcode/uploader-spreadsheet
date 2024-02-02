@@ -63,6 +63,39 @@ class Mdata extends CI_Model{
 			return 2;
 		}
 	}
+
+	function check_data_cetak_express($id){
+		$this->expressdb = $this->load->database('expressdb', TRUE);
+		$sql = "select id from datacetak where id_dummy='$id'";
+		$query = $this->expressdb->query($sql);
+		if($query->num_rows() > 0){
+			return 1;
+		}else{
+			return 2;
+		}
+	}
+
+	function check_express_pemasukan($id){
+		$this->expressdb = $this->load->database('expressdb', TRUE);
+		$sql = "select id from pemasukkan where id_dummy='$id'";
+		$query = $this->expressdb->query($sql);
+		if($query->num_rows() > 0){
+			return 1;
+		}else{
+			return 2;
+		}
+	}
+
+	function check_express_pengeluaran($id){
+		$this->expressdb = $this->load->database('expressdb', TRUE);
+		$sql = "select id from pengeluaran where id_dummy='$id'";
+		$query = $this->expressdb->query($sql);
+		if($query->num_rows() > 0){
+			return 1;
+		}else{
+			return 2;
+		}
+	}
 	
     
 	
