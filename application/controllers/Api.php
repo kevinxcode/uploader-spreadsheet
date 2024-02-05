@@ -68,7 +68,7 @@ class Api extends CI_Controller {
 		$list = $query->result();
 		$this->abcdb_real->close();
         foreach($list as $dt){
-                $id_ = $dt->id;
+                $id_ = $dt->NoInvoice;
                 $date_ = $dt->Tanggal;
                 $invoice_date = $this->Mdata->get_percent_date($id_,$date_);
             $data = array(
@@ -195,7 +195,7 @@ class Api extends CI_Controller {
 		$this->express_real->close();
        
         foreach($list as $dt){
-                $id_ = $dt->id;
+                $id_ = $dt->NoInvoice;
                 $date_ = $dt->Tanggal;
                 $invoice_date = $this->Mdata->get_percent_date($id_,$date_);
             $data = array(

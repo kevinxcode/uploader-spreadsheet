@@ -19,17 +19,18 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
 	public function index(){
-		$msg = $this->input->get('msg');
-		$com = $this->input->get('com');
-		$count = $this->input->get('count');
-		$data['msg'] = $msg;
-		$data['com'] = $com;
-		$data['count'] = $count;
-		if(isset($msg)){
-			$data['alert'] = 1;
-		}else{
-			$data['alert'] = 0;
-		}
-		$this->load->view('welcome_message', $data);
+		// $msg = $this->input->get('msg');
+		// $com = $this->input->get('com');
+		// $count = $this->input->get('count');
+		// $data['msg'] = $msg;
+		// $data['com'] = $com;
+		// $data['count'] = $count;
+		// if(isset($msg)){
+		// 	$data['alert'] = 1;
+		// }else{
+		// 	$data['alert'] = 0;
+		// }
+		// $this->load->view('welcome_message', $data);
+		redirect('data/home');
 	}
 }
