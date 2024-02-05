@@ -117,7 +117,7 @@
 										<i class="menu-bullet menu-bullet-dot">
 											<span></span>
 										</i>
-											<span class="menu-text">DATA ORDER</span>
+											<span class="menu-text">DATA CETAK</span>
 									</a>
 								</li>
 								
@@ -128,7 +128,16 @@
 										<i class="menu-bullet menu-bullet-dot">
 											<span></span>
 										</i>
-											<span class="menu-text">DATA INVOICE</span>
+											<span class="menu-text">KAS HARIAN</span>
+									</a>
+								</li>
+
+								<li class="menu-item <?php if($sub_page == "abc_invoice") {echo "menu-item-active";} ?>" aria-haspopup="true">
+									<a href="<?php echo prefix_url;?>master/role" class="menu-link">
+										<i class="menu-bullet menu-bullet-dot">
+											<span></span>
+										</i>
+											<span class="menu-text">PENGELUARAN</span>
 									</a>
 								</li>
 								
