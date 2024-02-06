@@ -140,4 +140,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Mdata');
+$autoload['model'] = array('Mdata','Mexport');
