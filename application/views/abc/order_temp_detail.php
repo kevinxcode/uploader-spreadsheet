@@ -17,29 +17,18 @@
 									<div class="card-header flex-wrap py-2">
 										<form action="<?php echo base_url(); ?>abc/order"  method="get" enctype="multipart/form-data">
 										<div class="card-title">
-											<h3 class="card-label">Data Order</h3>
+											<h3 class="card-label">Invoice Detail</h3>
 
-											<div class="form-group" style="margin-right: 5px">
-												<label>Start Date</label>
-												<input type="text" name="dt1" value="<?php echo $dt1; ?>" class="form-control"  />
-											</div>
-											<div class="form-group">
-												<label>End Date</label>
-												<input type="text" name="dt2" value="<?php echo $dt2; ?>" class="form-control"  />
-											</div>
-											<div class="form-group">
-												<label>.</label>
-												<input type="submit" name="check"  value="SUBMIT"  class="btn btn-primary btn-sm">
-											</div>
+											
 
 										</div>
 										</form>
 										<div class="card-toolbar">
 											<!--begin::Button-->
 
-											<a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-sm">
+											<!-- <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-sm">
 												<span class="svg-icon svg-icon-sm"><i class="flaticon2-plus"></i></span>ADD
-											</a>
+											</a> -->
 
 											<!--end::Button-->
 
@@ -125,6 +114,7 @@
 
         </tbody>
 										</table>
+                    Grand Total : <?php echo $ActualAmount; ?>
 										<!--end: Datatable-->
 									</div>
 								</div>

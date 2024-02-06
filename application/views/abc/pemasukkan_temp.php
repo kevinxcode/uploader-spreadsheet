@@ -15,9 +15,9 @@
 								<!--begin::Card-->
 								<div class="card card-custom">
 									<div class="card-header flex-wrap py-2">
-										<form action="<?php echo base_url(); ?>abc/order"  method="get" enctype="multipart/form-data">
+										<form action="<?php echo base_url(); ?>abc/kas"  method="get" enctype="multipart/form-data">
 										<div class="card-title">
-											<h3 class="card-label">Data Order</h3>
+											<h3 class="card-label">Data Pemasukkan</h3>
 
 											<div class="form-group" style="margin-right: 5px">
 												<label>Start Date</label>
@@ -50,76 +50,28 @@
 <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
 										<thead>
             <tr>
-                <th>No.Orcl</th>
-                <th>Tanggal</th>
+							<th>#</th>
+                <th>Invoice No</th>
+								<th>Invoice Date</th>
                 <th>Customer</th>
-                <th>Deskripsi</th>
-                <th>Bahan</th>
-                <th>Sisi</th>
-                <th>UK 1</th>
-                <th>X</th>
-                <th>UK 2</th>
-                <th>M</th>
-                <th>JUMLAH</th>
-                <th>PCS</th>
-                <th>Finishing</th>
-                <th>Desain</th>
-                <th>Harga Modal</th>
-                <th>Unit Price Modal</th>
-                <th>Total Modal</th>
-                <th>Harga</th>
-                <th>Unit Price</th>
-                <th>Total</th>
-                <th>Balance</th>
-                <th>Dp</th>
-                <th>PPN</th>
-                <th>Actual Amount</th>
-                <th>Sisa Bayar</th>
-                <th>Tgl DP</th>
-                <th>Tgl Lunas</th>
-                <th>No.Invoice</th>
-                <th>Status</th>
-                <th>Validasi</th>
-                <th>USER</th>
-                <th>Mesin</th>
+                <th>Payment Status</th>
+								<th>Amount</th>
+                <th>Action</th>
             </tr>
         </thead>
 
         <tbody>
+					<?php $i = 1; ?>
 			<?php foreach($list as $dt) { ?>
             <tr>
-                <td><?php echo $dt->id; ?></td>
-                <td><?php echo $dt->Tanggal; ?></td>
-                <td><?php echo $dt->Customer; ?></td>
-                <td><?php echo $dt->Deskripsi; ?></td>
-                <td><?php echo $dt->Bahan; ?></td>
-                <td><?php echo $dt->Sisi; ?></td>
-                <td><?php echo $dt->Uk1; ?></td>
-                <td><?php echo $dt->X; ?></td>
-                <td><?php echo $dt->Uk2; ?></td>
-                <td><?php echo $dt->M; ?></td>
-                <td><?php echo $dt->Jumlah; ?></td>
-                <td><?php echo $dt->Pcs; ?></td>
-                <td><?php echo $dt->Finishing; ?></td>
-                <td><?php echo $dt->Desain; ?></td>
-                <td><?php echo $dt->HargaModal; ?></td>
-                <td><?php echo $dt->UnitPriceModal; ?></td>
-                <td><?php echo $dt->TotalModal; ?></td>
-                <td><?php echo $dt->Harga; ?></td>
-                <td><?php echo $dt->UnitPrice; ?></td>
-                <td><?php echo $dt->Total; ?></td>
-                <td><?php echo $dt->Balance; ?></td>
-                <td><?php echo $dt->Dp; ?></td>
-                <td><?php echo $dt->Ppn; ?></td>
-                <td><?php echo $dt->ActualAmount; ?></td>
-                <td><?php echo $dt->SisaBayar; ?></td>
-                <td><?php echo $dt->Tgl_DP; ?></td>
-                <td><?php echo $dt->Tgl_Lunas; ?></td>
+							<td><?php echo $i++; ?></td>
                 <td><?php echo $dt->NoInvoice; ?></td>
-                <td><?php echo $dt->Status; ?></td>
-                <td><?php echo $dt->Validasi; ?></td>
-                <td><?php echo $dt->User; ?></td>
-                <td><?php echo $dt->Mesin; ?></td>
+                <td><?php echo $dt->invoice_date; ?></td>
+                <td><?php echo $dt->Customer; ?></td>
+                <td><?php echo $dt->StatusBayar; ?></td>
+								<td><?php echo $dt->inv_total; ?></td>
+                <td><span onclick="openFullScreenPopupWithFocus('<?php echo prefix_url;?>abc/invDetail?invoice_no=<?php echo $dt->NoInvoice; ?>')" class="btn btn-primary btn-sm">View</span></td>
+
             </tr>
 			<?php } ?>
 
@@ -136,7 +88,15 @@
 					</div>
 					<!--end::Content-->
 
-
+					<script>
+					function openFullScreenPopupWithFocus(url) {
+					    var options = "fullscreen=yes,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no";
+						var left = (screen.width / 2) - (screen.availWidth / 2);
+					    var top = (screen.height / 2) - (screen.availHeight / 2);
+						var popup = window.open(url, "_blank", "width=" + screen.availWidth / 1.3 + ", height=" + screen.availHeight + ", " + options + ", left=" + left + ", top=" + top);
+					    popup.focus();
+					}
+					</script>
 
 
 	<!-- Modal -->
@@ -149,7 +109,7 @@
       </div>
       <div class="modal-body">
 
-				<form action="<?php echo base_url(); ?>abc/uplpoad_data_cetak"  method="post" enctype="multipart/form-data">
+<form action="<?php echo base_url(); ?>abc/upload_kas"  method="post" enctype="multipart/form-data">
 <input type="radio" id="html" name="action_data" value="insert" checked>
 <label for="html">Insert Data</label><br>
 <input type="radio" id="css" name="action_data" value="update">

@@ -29,6 +29,67 @@ class Abc extends CI_Controller {
 		$this->load->view('app/index_footer_template', $data);
 	}
 
+	function kas(){
+		$data['current_page'] = "abc";
+		$data['sub_page'] = "abc_kas";
+		$check = $this->input->get('check');
+		if(isset($check)){
+			$dt1 = $this->input->get('dt1');
+			$dt2 = $this->input->get('dt2');
+		}else{
+			$dt1 = date('Y-m-d', strtotime(date('Y-m-d'). ' - 30 days'));
+			$dt2 = date('Y-m-d', strtotime(date('Y-m-d'). ' + 2 days'));
+		}
+		$data['dt1'] = $dt1;
+		$data['dt2'] = $dt2;
+
+		$this->abcdb = $this->load->database('abcdb', TRUE);
+		$sql = "WITH
+		t1 AS (SELECT * FROM pemasukkan WHERE tanggal BETWEEN '$dt1' AND '$dt2' 
+		ORDER BY NoInvoice DESC),
+		t2 AS (SELECT NoInvoice, SUM(ActualAmount) AS inv_total FROM datacetak 
+		WHERE NoInvoice IN (SELECT DISTINCT(t1.NoInvoice) FROM t1) GROUP BY NoInvoice )
+		SELECT * FROM t1
+		INNER JOIN t2 ON t2.NoInvoice=t1.NoInvoice";
+		$query = $this->abcdb->query($sql);
+		$list =  $query->result();
+		$this->abcdb->close();
+
+		$data['list'] = $list;
+		$this->load->view('app/index_header_template', $data);
+		$this->load->view('abc/pemasukkan_temp', $data);
+		$this->load->view('app/index_footer_template', $data);
+	}
+
+	function invDetail(){
+		$data['current_page'] = "abc";
+		$data['sub_page'] = "abc_data_cetak";
+		$invoice_no = $this->input->get('invoice_no');
+		
+
+		$this->abcdb = $this->load->database('abcdb', TRUE);
+		$sql = "SELECT * FROM datacetak where NoInvoice = '$invoice_no' order by id asc";
+		$query = $this->abcdb->query($sql);
+		$list =  $query->result();
+
+		$sql2 = "SELECT SUM(ActualAmount) AS ActualAmount FROM datacetak where NoInvoice = '$invoice_no' order by id asc";
+		$query2 = $this->abcdb->query($sql2);
+		$list2 =  $query2->result();
+
+		$this->abcdb->close();
+		$ActualAmount = 0;
+		foreach($list2 as $dt){
+			$ActualAmount = $dt->ActualAmount;
+		}
+		
+
+		$data['list'] = $list;
+		$data['ActualAmount'] = $ActualAmount;
+		$this->load->view('app/index_header_template_view', $data);
+		$this->load->view('abc/order_temp_detail', $data);
+		$this->load->view('app/index_footer_template', $data);
+	}
+
 	// old
 
 	public function index(){
@@ -55,6 +116,8 @@ class Abc extends CI_Controller {
 
 	function uplpoad_data_cetak(){
 		set_time_limit(500000000000000000); // 
+		$action_data = $this->input->post('action_data');
+
 		if(isset($_POST['import'])){ // Jika user mengklik tombol Import
 			// ambil data file
 			$namaFile = $_FILES['namafile']['name'];
@@ -140,8 +203,9 @@ class Abc extends CI_Controller {
 				'Mesin' => $Mesin,
 			);
 			$this->abcdb = $this->load->database('abcdb', TRUE);
-			$check = $this->check_data_cetak($id);
-			if($check==2){
+			// $check = $this->check_data_cetak($id);
+			
+			if($action_data=='insert'){
 				$this->abcdb->insert('datacetak', $data);
 			}else{
 				$this->abcdb->where('id', $id);
