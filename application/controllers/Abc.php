@@ -10,7 +10,9 @@ class Abc extends CI_Controller {
 		if(isset($check)){
 			$dt1 = $this->input->get('dt1');
 			$dt2 = $this->input->get('dt2');
+			$data['check'] = $check;
 		}else{
+			$data['check'] = '';
 			$dt1 = date('Y-m-d', strtotime(date('Y-m-d'). ' - 30 days'));
 			$dt2 = date('Y-m-d', strtotime(date('Y-m-d'). ' + 2 days'));
 		}
@@ -25,9 +27,9 @@ class Abc extends CI_Controller {
 
 		if($check=='EXPORT'){
 			$this->Mexport->spreadsheet($list,'abc_data_cetak');
-			redirect('/abc_data_cetak.xlsx');
+			// redirect('/abc_data_cetak.xlsx');
 		}
-
+		$data['file_name'] = '/abc_data_cetak.xlsx';
 		$data['list'] = $list;
 		$this->load->view('app/index_header_template', $data);
 		$this->load->view('abc/order_temp', $data);
@@ -41,7 +43,9 @@ class Abc extends CI_Controller {
 		if(isset($check)){
 			$dt1 = $this->input->get('dt1');
 			$dt2 = $this->input->get('dt2');
+			$data['check'] = $check;
 		}else{
+			$data['check'] = '';
 			$dt1 = date('Y-m-d', strtotime(date('Y-m-d'). ' - 30 days'));
 			$dt2 = date('Y-m-d', strtotime(date('Y-m-d'). ' + 2 days'));
 		}
@@ -62,9 +66,9 @@ class Abc extends CI_Controller {
 
 		if($check=='EXPORT'){
 			$this->Mexport->spreadsheet($list,'abc_pemasukkan');
-			redirect('/abc_pemasukkan.xlsx');
+			// redirect('/abc_pemasukkan.xlsx');
 		}
-
+		$data['file_name'] = '/abc_pemasukkan.xlsx';
 		$data['list'] = $list;
 		$this->load->view('app/index_header_template', $data);
 		$this->load->view('abc/pemasukkan_temp', $data);
@@ -106,7 +110,9 @@ class Abc extends CI_Controller {
 		if(isset($check)){
 			$dt1 = $this->input->get('dt1');
 			$dt2 = $this->input->get('dt2');
+			$data['check'] = $check;
 		}else{
+			$data['check'] = '';
 			$dt1 = date('Y-m-d', strtotime(date('Y-m-d'). ' - 30 days'));
 			$dt2 = date('Y-m-d', strtotime(date('Y-m-d'). ' + 2 days'));
 		}
@@ -121,9 +127,9 @@ class Abc extends CI_Controller {
 
 		if($check=='EXPORT'){
 			$this->Mexport->spreadsheet($list,'abc_pengeluaran');
-			redirect('/abc_pengeluaran.xlsx');
+			// redirect('/abc_pengeluaran.xlsx');
 		}
-
+		$data['file_name'] = '/abc_pengeluaran.xlsx';
 		$data['list'] = $list;
 		$this->load->view('app/index_header_template', $data);
 		$this->load->view('abc/pengeluaran_temp', $data);

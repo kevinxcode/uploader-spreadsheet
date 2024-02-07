@@ -47,6 +47,9 @@
 										</div>
 									</div>
 									<div class="card-body">
+										<?php if($check=='EXPORT'){ ?>
+										<a href="<?php echo $file_name; ?>" download>Download</a><hr>
+										<?php } ?>
 										<!--begin: Datatable-->
 <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
 										<thead>

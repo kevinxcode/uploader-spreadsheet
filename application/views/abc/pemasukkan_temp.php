@@ -33,6 +33,8 @@
 												<input type="submit" name="check"  value="EXPORT"  class="btn btn-primary btn-sm">
 											</div>
 
+
+
 										</div>
 										</form>
 										<div class="card-toolbar">
@@ -45,9 +47,13 @@
 											<!--end::Button-->
 
 										</div>
+
 									</div>
 									<div class="card-body">
 										<!--begin: Datatable-->
+										<?php if($check=='EXPORT'){ ?>
+									<a href="<?php echo $file_name; ?>" download>Download</a><hr>
+									<?php } ?>
 <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
 										<thead>
             <tr>
