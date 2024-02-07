@@ -12,7 +12,14 @@ class Mexport extends CI_Model{
         parent::__construct();
     }
 
-  
+    function tes(){
+        $spreadsheet = new Spreadsheet();
+        $activeWorksheet = $spreadsheet->getActiveSheet();
+        $activeWorksheet->setCellValue('A1', 'Hello World !');
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('hello world.xlsx');
+    }
 
     function spreadsheet($myObj,$file){
         // Create a new spreadsheet object
@@ -72,11 +79,13 @@ class Mexport extends CI_Model{
         $i = $i - 1;
         $worksheet->getStyle('A1:'.$last_cells.''.$i)->applyFromArray($styleArray);
         // Save the spreadsheet to a file
+        // $writer = new Xlsx($spreadsheet);
+        // $fileName = $file.".xlsx";
+        // header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        // header('Content-Disposition: attachment; filename="'. urlencode($fileName).'"');
+        // $writer->save('php://output');
         $writer = new Xlsx($spreadsheet);
-        $fileName = $file.".xlsx";
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="'. urlencode($fileName).'"');
-        $writer->save('php://output');
+        $writer->save($file.'.xlsx');
     }
 
     

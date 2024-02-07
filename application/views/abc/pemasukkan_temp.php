@@ -30,6 +30,7 @@
 											<div class="form-group">
 												<label>.</label>
 												<input type="submit" name="check"  value="SUBMIT"  class="btn btn-primary btn-sm">
+												<input type="submit" name="check"  value="EXPORT"  class="btn btn-primary btn-sm">
 											</div>
 
 										</div>
@@ -110,11 +111,6 @@
       <div class="modal-body">
 
 <form action="<?php echo base_url(); ?>abc/upload_kas"  method="post" enctype="multipart/form-data">
-<input type="radio" id="html" name="action_data" value="insert" checked>
-<label for="html">Insert Data</label><br>
-<input type="radio" id="css" name="action_data" value="update">
-<label for="css">Update Data</label><br>
-
 				  <label for="lname">excel File:</label><br>
 				  <input type="file" name="namafile" ><br><br>
 				  <input type="submit" name="import" id="btn_submit" onclick="uploadData()" value="import"  class="btn btn-primary btn-sm">

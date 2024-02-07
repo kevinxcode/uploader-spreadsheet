@@ -23,6 +23,11 @@ class Abc extends CI_Controller {
 		$list =  $query->result();
 		$this->abcdb->close();
 
+		if($check=='EXPORT'){
+			$this->Mexport->spreadsheet($list,'abc_data_cetak');
+			redirect('/abc_data_cetak.xlsx');
+		}
+
 		$data['list'] = $list;
 		$this->load->view('app/index_header_template', $data);
 		$this->load->view('abc/order_temp', $data);
@@ -55,6 +60,11 @@ class Abc extends CI_Controller {
 		$list =  $query->result();
 		$this->abcdb->close();
 
+		if($check=='EXPORT'){
+			$this->Mexport->spreadsheet($list,'abc_pemasukkan');
+			redirect('/abc_pemasukkan.xlsx');
+		}
+
 		$data['list'] = $list;
 		$this->load->view('app/index_header_template', $data);
 		$this->load->view('abc/pemasukkan_temp', $data);
@@ -81,16 +91,44 @@ class Abc extends CI_Controller {
 		foreach($list2 as $dt){
 			$ActualAmount = $dt->ActualAmount;
 		}
-		
-
 		$data['list'] = $list;
 		$data['ActualAmount'] = $ActualAmount;
 		$this->load->view('app/index_header_template_view', $data);
 		$this->load->view('abc/order_temp_detail', $data);
 		$this->load->view('app/index_footer_template', $data);
 	}
-
 	// old
+
+	function pengeluaran_view(){
+		$data['current_page'] = "abc";
+		$data['sub_page'] = "abc_pengeluaran";
+		$check = $this->input->get('check');
+		if(isset($check)){
+			$dt1 = $this->input->get('dt1');
+			$dt2 = $this->input->get('dt2');
+		}else{
+			$dt1 = date('Y-m-d', strtotime(date('Y-m-d'). ' - 30 days'));
+			$dt2 = date('Y-m-d', strtotime(date('Y-m-d'). ' + 2 days'));
+		}
+		$data['dt1'] = $dt1;
+		$data['dt2'] = $dt2;
+
+		$this->abcdb = $this->load->database('abcdb', TRUE);
+		$sql = "SELECT * FROM pengeluaran WHERE tanggal BETWEEN '$dt1' AND '$dt2' ORDER BY id desc";
+		$query = $this->abcdb->query($sql);
+		$list =  $query->result();
+		$this->abcdb->close();
+
+		if($check=='EXPORT'){
+			$this->Mexport->spreadsheet($list,'abc_pengeluaran');
+			redirect('/abc_pengeluaran.xlsx');
+		}
+
+		$data['list'] = $list;
+		$this->load->view('app/index_header_template', $data);
+		$this->load->view('abc/pengeluaran_temp', $data);
+		$this->load->view('app/index_footer_template', $data);
+	}
 
 	public function index(){
 		$this->load->view('welcome_message');

@@ -111,7 +111,7 @@
 							<i class="menu-arrow"></i>
 							<ul class="menu-subnav">
 
-								
+
 								<li class="menu-item <?php if($sub_page == "abc_data_cetak") {echo "menu-item-active";} ?>" aria-haspopup="true">
 									<a href="<?php echo prefix_url;?>abc/order" class="menu-link">
 										<i class="menu-bullet menu-bullet-dot">
@@ -120,9 +120,9 @@
 											<span class="menu-text">DATA CETAK</span>
 									</a>
 								</li>
-								
 
-								
+
+
 								<li class="menu-item <?php if($sub_page == "abc_kas") {echo "menu-item-active";} ?>" aria-haspopup="true">
 									<a href="<?php echo prefix_url;?>abc/kas" class="menu-link">
 										<i class="menu-bullet menu-bullet-dot">
@@ -132,20 +132,20 @@
 									</a>
 								</li>
 
-								<li class="menu-item <?php if($sub_page == "abc_invoice") {echo "menu-item-active";} ?>" aria-haspopup="true">
-									<a href="<?php echo prefix_url;?>master/role" class="menu-link">
+								<li class="menu-item <?php if($sub_page == "abc_pengeluaran") {echo "menu-item-active";} ?>" aria-haspopup="true">
+									<a href="<?php echo prefix_url;?>abc/pengeluaran_view" class="menu-link">
 										<i class="menu-bullet menu-bullet-dot">
 											<span></span>
 										</i>
 											<span class="menu-text">PENGELUARAN</span>
 									</a>
 								</li>
-								
+
 
 							</ul>
 						</div>
 					</li>
-				
+
 
 
 
@@ -206,7 +206,7 @@
 
 								<!--begin::User-->
 								<div class="topbar-item mr-4">
-										
+
 								</div>
 								<!--end::User-->
 								<!--begin::Create-->
@@ -236,7 +236,7 @@
 													<span class="navi-icon">
 														<i class="flaticon2-user"></i>
 													</span>
-													
+
 												</a>
 											</li>
 
